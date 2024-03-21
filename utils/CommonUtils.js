@@ -5,3 +5,10 @@ export const defaultStateReducer = (state, action) => {
 
   return { ...newState };
 };
+
+export const NavigationPathConst = {
+  Home:"Home",
+  ChatListScreen:"ChatListScreen",
+  ChatSettingsScreen:"ChatSettingsScreen",
+  SettingsScreen:"SettingsScreen",
+}
