@@ -3,10 +3,14 @@ import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./navigators/StackNavigator/StackNavigator";
+import * as SplashScreen from "expo-splash-screen";
 import useApp from "./useApp";
+import AuthScreen from "./screens/AuthScreen/AuthScreen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const { isAppLoaded, onLayoutChange } = useApp();
+  const { isAppLoaded, isAuthenticated, onLayoutChange } = useApp();
 
   if (!isAppLoaded) {
     return null;
@@ -14,7 +18,7 @@ export default function App() {
   return (
     <SafeAreaProvider style={styles.container} onLayout={onLayoutChange}>
       <NavigationContainer>
-        <StackNavigator />
+        {isAuthenticated ? <StackNavigator /> : <AuthScreen />}
       </NavigationContainer>
     </SafeAreaProvider>
   );

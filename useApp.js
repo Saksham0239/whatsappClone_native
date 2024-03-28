@@ -5,12 +5,13 @@ import * as Font from "expo-font";
 
 const initialState = {
   isAppLoaded: false,
+  isAuthenticated: false,
 };
 
 const useApp = () => {
   const [state, dispatch] = useReducer(defaultStateReducer, initialState);
 
-  const { isAppLoaded } = state;
+  const { isAppLoaded, isAuthenticated } = state;
 
   useEffect(() => {
     prepareFonts();
@@ -47,6 +48,7 @@ const useApp = () => {
 
   return {
     isAppLoaded,
+    isAuthenticated,
     onLayoutChange,
   };
 };
