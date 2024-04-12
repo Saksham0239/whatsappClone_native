@@ -4,6 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./navigators/StackNavigator/StackNavigator";
 import * as SplashScreen from "expo-splash-screen";
+import ErrorProvider from "./error/ErrorProvider";
 import useApp from "./useApp";
 import AuthScreen from "./screens/AuthScreen/AuthScreen";
 
@@ -18,7 +19,9 @@ export default function App() {
   return (
     <SafeAreaProvider style={styles.container} onLayout={onLayoutChange}>
       <NavigationContainer>
-        {isAuthenticated ? <StackNavigator /> : <AuthScreen />}
+        <ErrorProvider>
+          {isAuthenticated ? <StackNavigator /> : <AuthScreen />}
+        </ErrorProvider>
       </NavigationContainer>
     </SafeAreaProvider>
   );

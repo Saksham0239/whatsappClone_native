@@ -2,7 +2,10 @@ import { customInputStyles } from "./CustomInput.styles";
 import { View, Text, TextInput } from "react-native";
 
 const CustomInput = (props) => {
-  const { label, iconName, iconSize, errorText } = props;
+  const { label, iconName, iconSize, errorText,id,formChangeHandler } = props;
+  const onChangeTextHandler = (val)=>{
+    formChangeHandler(id,val);
+  }
   return (
     <View style={customInputStyles.container}>
       <Text style={customInputStyles.label}>{label}</Text>
@@ -15,7 +18,7 @@ const CustomInput = (props) => {
             style={customInputStyles.icon}
           />
         )}
-        <TextInput style={customInputStyles?.input} />
+        <TextInput style={customInputStyles?.input} onChangeText={onChangeTextHandler}/>
       </View>
       {errorText && (
         <View style={customInputStyles?.errorContainer}>
