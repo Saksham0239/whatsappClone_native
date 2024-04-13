@@ -2,19 +2,15 @@ import { validateString } from "../../utils/ValidationUtils";
 import CustomInput from "../CustomInput/CustomInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { AntDesign } from "@expo/vector-icons";
-import {validate} from "validate.js";
-
 
 const SignInForm = () => {
+  const formChangeHandler = (id, value) => {
+    console.log(id, value);
 
-  const formChangeHandler=(id,value)=>{
-    console.log(id,value);
-
-    if(id==="firstName" || id==="lastName"){
-      console.log(validateString(id,value));
+    if (id === "firstName" || id === "lastName") {
+      console.log(validateString(id, value));
     }
-    
-  }
+  };
 
   return (
     <>
@@ -41,7 +37,7 @@ const SignInForm = () => {
         disabled={false}
       />
 
-    {/* <SubmitButton
+      {/* <SubmitButton
         title="fullpageError"
         onClick={() => dispatchError({
           type:ErrorTypes?.FULL_PAGE_ERROR,
