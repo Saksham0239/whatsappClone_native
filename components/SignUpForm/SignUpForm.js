@@ -1,10 +1,19 @@
+import { validateString,validateEmail, validatePassword } from "../../utils/ValidationUtils";
 import CustomInput from "../CustomInput/CustomInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { AntDesign } from "@expo/vector-icons";
 
 const SignUpForm = () => {
   const formChangeHandler=(id,value)=>{
-    console.log(id,value);
+    if(id==='firstName' || id==="lastName"){
+      console.log(validateString(id,value));
+    }
+    else if(id==='email'){
+      console.log(validateEmail(id,value));
+    }
+    else if(id==='password'){
+      console.log(validatePassword(id,value));
+    }
   }
   return (
     <>

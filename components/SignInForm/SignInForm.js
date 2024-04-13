@@ -1,3 +1,4 @@
+import { validateString } from "../../utils/ValidationUtils";
 import CustomInput from "../CustomInput/CustomInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { AntDesign } from "@expo/vector-icons";
@@ -9,16 +10,10 @@ const SignInForm = () => {
   const formChangeHandler=(id,value)=>{
     console.log(id,value);
 
-    if(id === 'email'){
-      constraints = {
-        from: {
-          email: {
-            message: "doesn't look like a valid email"
-          }
-        }
-      };
-      console.log(validate({[id]:value},{[id]:constraints}));
+    if(id==="firstName" || id==="lastName"){
+      console.log(validateString(id,value));
     }
+    
   }
 
   return (
